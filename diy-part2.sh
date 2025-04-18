@@ -10,9 +10,9 @@
 # See /LICENSE for more information.
 #
 # 解决冲突（适用于kenzok8插件源码）
- rm -rf feeds/luci/applications/luci-app-mosdns
- rm -rf feeds/packages/net/{alist,adguardhome,mosdns,xray*,v2ray*,v2ray*,sing*,smartdns}
- rm -rf feeds/packages/utils/v2dat
+# rm -rf feeds/luci/applications/luci-app-mosdns
+# rm -rf feeds/packages/net/{alist,adguardhome,mosdns,xray*,v2ray*,v2ray*,sing*,smartdns}
+# rm -rf feeds/packages/utils/v2dat
  rm -rf feeds/packages/lang/golang
  git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 
@@ -44,7 +44,7 @@ git clone https://github.com/leshanydy2022/smartdns.git feeds/packages/net/smart
 sed -i 's/ImmortalWrt/ImmortalWrt-YDY/g' package/base-files/files/bin/config_generate
 
 # Modify filename, add date prefix
-sed -i 's/IMG_PREFIX:=/IMG_PREFIX:=$(shell date +"%Y%m%d")-/1' include/image.mk
+#sed -i 's/IMG_PREFIX:=/IMG_PREFIX:=$(shell date +"%Y%m%d")-/1' include/image.mk
 
 # Modify ppp-down, add sleep 3
 # sed -i '$a\\\nsleep 3' package/network/services/ppp/files/lib/netifd/ppp-down
