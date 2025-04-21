@@ -10,7 +10,7 @@
 # See /LICENSE for more information.
 #
 
-name: Build immortalwrt
+name: Build immortalwrt-mt798x
 
 on:
   repository_dispatch:
