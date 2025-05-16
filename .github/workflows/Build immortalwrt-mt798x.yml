@@ -93,7 +93,20 @@ jobs:
          cp -r packages_temp/net/wsdd2 feeds/packages/net/
          rm -rf packages_temp
 
-
+    - name: 缺失内容
+      run: |
+        cd openwrt
+        ./scripts/feeds install libev
+        ./scripts/feeds install kmod-hwmon-core
+        sed -i 's/lm-sensors/kmod-hwmon-core/g' package/emortal/autocore/Makefile
+        echo 'src-git openwrt_packages https://git.openwrt.org/feed/packages.git' >> feeds.conf.default
+        ./scripts/feeds update openwrt_packages
+        ./scripts/feeds install wsdd2
+        ./scripts/feeds install libpam
+        ./scripts/feeds install liblzma
+        ./scripts/feeds install wget-ssl
+        ./scripts/feeds install libnetsnmp
+    
 
     - name: Install feeds
       run: |
