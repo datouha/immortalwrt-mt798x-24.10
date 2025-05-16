@@ -58,6 +58,7 @@ jobs:
         ninja-build p7zip p7zip-full patch pkgconf python3 python3-pip python3-ply python3-docutils \
         python3-pyelftools qemu-utils re2c rsync scons squashfs-tools subversion swig texinfo uglifyjs \
         upx-ucl unzip vim wget xmlto xxd zlib1g-dev zstd
+        sudo apt install -y libpam0g-dev libsensors4-dev libcap-dev libjson-c-dev
         sudo -E apt-get -qq autoremove --purge
         sudo -E apt-get -qq clean
         sudo timedatectl set-timezone "$TZ"
@@ -87,6 +88,10 @@ jobs:
          rm -rf ./feeds/packages/lang/golang
          mv ./packages_master/lang/golang ./feeds/packages/lang
          rm -rf ./packages_master
+         git clone https://github.com/openwrt/packages packages_temp
+         cp -r packages_temp/libs/libpam feeds/packages/libs/
+         cp -r packages_temp/net/wsdd2 feeds/packages/net/
+         rm -rf packages_temp
 
 
 
