@@ -93,34 +93,15 @@ jobs:
          cp -r packages_temp/net/wsdd2 feeds/packages/net/
          rm -rf packages_temp
 
-    - name: 缺失内容
-      run: |
-        cd openwrt
-        ./scripts/feeds install libev
-        ./scripts/feeds install kmod-hwmon-core
-        sed -i 's/lm-sensors/kmod-hwmon-core/g' package/emortal/autocore/Makefile
-        echo 'src-git openwrt_packages https://git.openwrt.org/feed/packages.git' >> feeds.conf.default
-        ./scripts/feeds update openwrt_packages
-        ./scripts/feeds install wsdd2
-        ./scripts/feeds install libpam
-        ./scripts/feeds install liblzma
-        ./scripts/feeds install wget-ssl
-        ./scripts/feeds install libnetsnmp
     
 
     - name: Install feeds
       run: |
         cd openwrt && ./scripts/feeds install -a
-        rm -rf feeds/luci/applications/luci-app-passwall/
-        rm -rf feeds/packages/net/xray-core/
-        rm -rf feeds/packages/net/xray-plugin/
-        rm -rf feeds/packages/net/chinadns-ng/
-        rm -rf feeds/packages/net/sing-box/
-        rm -rf feeds/packages/net/hysteria/
-        rm -rf feeds/packages/net/shadowsocksr-libev/
-        git clone https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwall
-        git clone https://github.com/xiaorouji/openwrt-passwall-packages package/luci-app-passwall-packages
-        git clone https://github.com/asvow/luci-app-tailscale package/luci-app-tailscale
+
+        
+
+
 
     - name: Update Golang
       run: |
