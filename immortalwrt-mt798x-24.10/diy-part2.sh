@@ -1,0 +1,62 @@
+#!/bin/bash
+#
+# https://github.com/P3TERX/Actions-OpenWrt
+# File name: diy-part2.sh
+# Description: OpenWrt DIY script part 2 (After Update feeds)
+#
+# Copyright (c) 2019-2024 P3TERX <https://p3terx.com>
+#
+# This is free software, licensed under the MIT License.
+# See /LICENSE for more information.
+#
+# 解决冲突（适用于kenzok8插件源码）
+# rm -rf feeds/luci/applications/luci-app-mosdns
+# rm -rf feeds/packages/net/{alist,adguardhome,mosdns,xray*,v2ray*,v2ray*,sing*,smartdns}
+# rm -rf feeds/packages/utils/v2dat
+# rm -rf feeds/packages/lang/golang
+# git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
+
+# 设置主路由静态IP
+# sed -i 's/192.168.1.1/192.168.6.1/g' package/base-files/files/bin/config_generate
+
+# 设置密码为空
+sed -i '/CYXluq4wUazHjmCDBCqXF/d' package/lean/default-settings/files/zzz-default-settings
+
+# 安装新主题 luci-theme-bootstrap-mod
+# git clone https://github.com/leshanydy2022/luci-theme-bootstrap-mod.git package/lean/luci-theme-bootstrap-mod
+# sed -i 's/luci-theme-bootstrap/luci-theme-bootstrap-mod/g' feeds/luci/collections/luci/Makefile
+
+# 安装luci-app-smartdns和luci-app-adguardhome
+# rm -rf feeds/luci/applications/luci-app-smartdns
+rm -rf feeds/luci/applications/luci-app-adguardhome
+# git clone https://github.com/leshanydy2022/luci-app-smartdns.git feeds/luci/applications/luci-app-smartdns
+git clone https://github.com/leshanydy2022/luci-app-adguardhome.git package/lean/luci-app-adguardhome
+
+# 为adguardhome插件更换最新的版本
+rm -rf feeds/packages/net/adguardhome
+git clone https://github.com/leshanydy2022/adguardhome.git feeds/packages/net/adguardhome
+
+# 为adguardhome alist passwall插件更换最新的版本
+# rm -rf feeds/packages/net/{alist,adguardhome,chinadns-ng,dns2socks,geoview,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocksr-libev,simple-obfs,sing-box,tcping,trojan-plus,tuic-client,v2ray-geodata,v2ray-plugin,xray-core,xray-plugin}
+# rm -rf feeds/luci/applications/{luci-app-adguardhome,luci-app-alist,luci-app-passwall}   
+# git clone https://github.com/leshanydy2022/luci-app-adguardhome.git package/lean/luci-app-adguardhome
+# git clone https://github.com/leshanydy2022/adguardhome.git feeds/packages/net/adguardhome
+# git clone https://github.com/xiaorouji/openwrt-passwall-packages feeds/luci-app-passwall-packages
+# mv ./feeds/luci-app-passwall-packages/{dns2socks,geoview,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocksr-libev,simple-obfs,sing-box,tcping,trojan-plus,tuic-client,v2ray-geodata,v2ray-plugin,xray-core,xray-plugin,chinadns-ng} ./feeds/packages/net
+# rm -rf feeds/luci-app-passwall-packages
+# git clone https://github.com/sbwml/luci-app-alist package/alist
+# mv ./package/alist/alist ./feeds/packages/net
+# git clone https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwall
+
+# 为smartDNS插件更换最新的版本
+# rm -rf feeds/packages/net/smartdns
+# git clone https://github.com/leshanydy2022/smartdns.git feeds/packages/net/smartdns
+
+# Modify hostname
+# sed -i 's/ImmortalWrt/ImmortalWrt-YDY/g' package/base-files/files/bin/config_generate
+
+# Modify filename, add date prefix
+#sed -i 's/IMG_PREFIX:=/IMG_PREFIX:=$(shell date +"%Y%m%d")-/1' include/image.mk
+
+# Modify ppp-down, add sleep 3
+# sed -i '$a\\\nsleep 3' package/network/services/ppp/files/lib/netifd/ppp-down
