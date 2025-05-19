@@ -15,11 +15,11 @@
 # sed -i '1i src-git danshui https://github.com/281677160/openwrt-package.git;immortalwrt' feeds.conf.default
 # sed -i '2i src-git dstheme https://github.com/281677160/openwrt-package.git;Theme2' feeds.conf.default
 #echo 'src-git alist https://github.com/sbwml/luci-app-alist' >>feeds.conf.default
-#echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
+echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
 
 # Add a feed source
 #echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
-# echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
+echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
 # echo 'src-git kenzo https://github.com/kenzok8/openwrt-packages' >>feeds.conf.default   
 # echo 'src-git small https://github.com/kenzok8/small' >>feeds.conf.default
 # git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
