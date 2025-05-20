@@ -17,7 +17,7 @@
 # git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 
 # 设置主路由静态IP
-# sed -i 's/192.168.1.1/192.168.6.1/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.6.1/g' package/base-files/files/bin/config_generate
 
 # 设置密码为空
 sed -i '/CYXluq4wUazHjmCDBCqXF/d' package/lean/default-settings/files/zzz-default-settings
