@@ -25,9 +25,9 @@ env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt
   REPO_BRANCH: openwrt-24.10
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: .config
-  DIY_P1_SH: diy-part1.sh
-  DIY_P2_SH: diy-part2.sh
+  CONFIG_FILE: immortalwrt/.config
+  DIY_P1_SH: immortalwrt/diy-part1.sh
+  DIY_P2_SH: immortalwrt/diy-part2.sh
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
@@ -83,10 +83,7 @@ jobs:
       run: |
          cd openwrt
          ./scripts/feeds update -a
-         git clone -b master --single-branch https://github.com/immortalwrt/packages.git packages_master
-         rm -rf feeds/packages/lang/golang
-         mv ./packages_master/lang/golang ./feeds/packages/lang
-         rm -rf ./packages_master
+
 
 
 
