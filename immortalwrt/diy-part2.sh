@@ -33,8 +33,8 @@ sed -i '/CYXluq4wUazHjmCDBCqXF/d' package/lean/default-settings/files/zzz-defaul
 # git clone https://github.com/leshanydy2022/luci-app-adguardhome.git package/lean/luci-app-adguardhome
 
 # 为adguardhome插件更换最新的版本
-rm -rf feeds/packages/net/adguardhome
-git clone https://github.com/leshanydy2022/adguardhome.git feeds/packages/net/adguardhome
+# rm -rf feeds/packages/net/adguardhome
+# git clone https://github.com/leshanydy2022/adguardhome.git feeds/packages/net/adguardhome
 
 # 为adguardhome alist passwall插件更换最新的版本
 # rm -rf feeds/packages/net/{alist,adguardhome,chinadns-ng,dns2socks,geoview,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocksr-libev,simple-obfs,sing-box,tcping,trojan-plus,tuic-client,v2ray-geodata,v2ray-plugin,xray-core,xray-plugin}
