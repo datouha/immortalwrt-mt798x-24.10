@@ -37,8 +37,8 @@ git clone https://github.com/leshanydy2022/luci-app-adguardhome.git package/lean
 # git clone https://github.com/leshanydy2022/adguardhome.git feeds/packages/net/adguardhome
 
 #  添加uugamebooster
-git clone https://github.com/datouha/uugamebooster package/uugamebooster
-mv ./package/uugamebooster/uugamebooster ./feeds/packages/net
+# git clone https://github.com/datouha/uugamebooster package/uugamebooster
+# mv ./package/uugamebooster/uugamebooster ./feeds/packages/net
 
 # 为adguardhome alist passwall插件更换最新的版本
 # rm -rf feeds/packages/net/{alist,adguardhome,chinadns-ng,dns2socks,geoview,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocksr-libev,simple-obfs,sing-box,tcping,trojan-plus,tuic-client,v2ray-geodata,v2ray-plugin,xray-core,xray-plugin}
