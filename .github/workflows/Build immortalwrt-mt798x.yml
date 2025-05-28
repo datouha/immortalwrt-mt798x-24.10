@@ -87,16 +87,19 @@ jobs:
          cp -r packages_temp/libs/libpam feeds/packages/libs/
          cp -r packages_temp/net/wsdd2 feeds/packages/net/
          rm -rf packages_temp
+         rm -rf feeds/luci.index
+         rm -rf feeds/packages.index
+         git clone https://github.com/datouha/uugamebooster feeds
+         mv ./package/uugamebooster ./feeds/packages/net
+         mv ./package/luci-app-uugamebooster ./feeds/luci/applications
+
 
     
 
     - name: Install feeds
       run: |
         cd openwrt && ./scripts/feeds install -a
-
         
-
-
 
     - name: Update Golang
       run: |
