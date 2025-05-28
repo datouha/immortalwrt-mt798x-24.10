@@ -33,8 +33,8 @@ rm -rf feeds/luci/applications/luci-app-adguardhome
 git clone https://github.com/leshanydy2022/luci-app-adguardhome.git package/lean/luci-app-adguardhome
 
 # 为adguardhome插件更换最新的版本
-rm -rf feeds/packages/net/adguardhome
-git clone https://github.com/leshanydy2022/adguardhome.git feeds/packages/net/adguardhome
+# rm -rf feeds/packages/net/adguardhome
+# git clone https://github.com/leshanydy2022/adguardhome.git feeds/packages/net/adguardhome
 
 #  添加uugamebooster
 git clone https://github.com/datouha/uugamebooster package/uugamebooster
