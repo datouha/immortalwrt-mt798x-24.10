@@ -26,6 +26,13 @@ git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
 # Add uugamebooster
+rm -rf feeds/luci/applications/luci-app-uugamebooster
+rm -rf feeds/packages/net/uugamebooster
+git clone https://github.com/datouha/uugamebooster.git feeds/1
+mv ./feeds/1/uugamebooster ./feeds/packages/net
+mv ./feeds/1/luci-app-uugamebooster ./feeds/luci/applications
+rm -rf feeds/1
+
 echo '
 
 Source-Makefile: feeds/luci/applications/luci-app-uugamebooster/Makefile
@@ -75,8 +82,8 @@ echo '
 Source-Makefile: feeds/packages/net/uugamebooster/Makefile
 
 Package: uugamebooster
-Version: 3.15.0-1
-Depends: +libc +USE_GLIBC:librt +USE_GLIBC:libpthread @(aarch64||arm||mipsel||x86_64) +kmod-tun
+Version: 8.8.12-1
+Depends: +libc +USE_GLIBC:libpthread +kmod-tun @aarch64 @arm @mipsel @x86_64
 Conflicts: 
 Menu-Depends: 
 Provides: 
@@ -84,13 +91,12 @@ Section: net
 Category: Network
 Repository: base
 Title: NetEase UU Game Booster
-Maintainer: Tianling Shen <cnsztl@immortalwrt.org>
-Source: uugamebooster-3.15.0-.tar.gz
+Maintainer: 
+Source: uugamebooster-8.8.12.tar.gz
 License: Proprietary
 Type: ipkg
-Description:   NetEase's UU Game Booster Accelerates Triple-A Gameplay and Market.
+Description: NetEase UU Game Booster Accelerates Triple-A Gameplay and Market.
 https://uu.163.com
-Tianling Shen <cnsztl@immortalwrt.org>
-@@
 
+@@
 ' >> feeds/packages.index
