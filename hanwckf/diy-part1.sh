@@ -29,14 +29,14 @@
 # 为adguardhome alist passwall插件更换最新的版本
 rm -rf feeds/packages/net/{alist,adguardhome,chinadns-ng,dns2socks,geoview,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocksr-libev,simple-obfs,sing-box,tcping,trojan-plus,tuic-client,v2ray-geodata,v2ray-plugin,xray-core,xray-plugin}
 rm -rf feeds/luci/applications/{luci-app-adguardhome,luci-app-alist,luci-app-passwall}   
-git clone https://github.com/leshanydy2022/luci-app-adguardhome.git packages/lean/luci-app-adguardhome
 git clone https://github.com/leshanydy2022/adguardhome.git feeds/packages/net/adguardhome
+git clone https://github.com/leshanydy2022/luci-app-adguardhome.git packages/lean/luci-app-adguardhome
 git clone https://github.com/xiaorouji/openwrt-passwall-packages feeds/luci-app-passwall-packages
 mv ./feeds/luci-app-passwall-packages/{dns2socks,geoview,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocksr-libev,simple-obfs,sing-box,tcping,trojan-plus,tuic-client,v2ray-geodata,v2ray-plugin,xray-core,xray-plugin,chinadns-ng} ./feeds/packages/net
 rm -rf feeds/luci-app-passwall-packages
-git clone https://github.com/sbwml/luci-app-alist package/alist
-mv ./package/alist/alist ./feeds/packages/net
-mv ./package/alist/luci-app-alist feeds/luci/applications/
-rm -rf package/alist
-git clone https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwall
-mv ./package/luci-app-passwall feeds/luci/applications/
+git clone https://github.com/sbwml/luci-app-alist feeds/alist
+mv ./feeds/alist/alist ./feeds/packages/net
+mv ./feeds/alist/luci-app-alist feeds/luci/applications/
+rm -rf feeds/alist
+git clone https://github.com/xiaorouji/openwrt-passwall feeds/luci-app-passwall
+mv ./feeds/luci-app-passwall feeds/luci/applications/
