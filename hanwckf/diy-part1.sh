@@ -22,14 +22,14 @@
 # echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
 # echo 'src-git kenzo https://github.com/kenzok8/openwrt-packages' >>feeds.conf.default   
 # echo 'src-git small https://github.com/kenzok8/small' >>feeds.conf.default
-git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
-git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
+# git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
+# git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
 
 # 为adguardhome alist passwall插件更换最新的版本
 rm -rf feeds/packages/net/{alist,adguardhome,chinadns-ng,dns2socks,geoview,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocksr-libev,simple-obfs,sing-box,tcping,trojan-plus,tuic-client,v2ray-geodata,v2ray-plugin,xray-core,xray-plugin}
 rm -rf feeds/luci/applications/{luci-app-adguardhome,luci-app-alist,luci-app-passwall}   
-git clone https://github.com/leshanydy2022/luci-app-adguardhome.git feeds/luci/applications/luci-app-adguardhome
+git clone https://github.com/leshanydy2022/luci-app-adguardhome.git packages/lean/luci-app-adguardhome
 git clone https://github.com/leshanydy2022/adguardhome.git feeds/packages/net/adguardhome
 git clone https://github.com/xiaorouji/openwrt-passwall-packages feeds/luci-app-passwall-packages
 mv ./feeds/luci-app-passwall-packages/{dns2socks,geoview,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocksr-libev,simple-obfs,sing-box,tcping,trojan-plus,tuic-client,v2ray-geodata,v2ray-plugin,xray-core,xray-plugin,chinadns-ng} ./feeds/packages/net
