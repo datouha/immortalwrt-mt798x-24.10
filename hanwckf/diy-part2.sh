@@ -30,7 +30,7 @@ sed -i 's/192.168.1.1/192.168.6.1/g' package/base-files/files/bin/config_generat
 # rm -rf feeds/luci/applications/luci-app-smartdns
 # rm -rf feeds/luci/applications/luci-app-adguardhome
 # git clone https://github.com/leshanydy2022/luci-app-smartdns.git feeds/luci/applications/luci-app-smartdns
-# git clone https://github.com/leshanydy2022/luci-app-adguardhome.git package/lean/luci-app-adguardhome
+git clone https://github.com/leshanydy2022/luci-app-adguardhome.git package/lean/luci-app-adguardhome
 
 # 为adguardhome插件更换最新的版本
 # rm -rf feeds/packages/net/adguardhome
