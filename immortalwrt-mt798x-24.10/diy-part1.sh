@@ -25,6 +25,14 @@
 # git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 # git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
+# add alist
+rm -rf feeds/packages/net/alist
+rm -rf feeds/luci/applications/luci-app-alist
+git clone https://github.com/sbwml/luci-app-alist feeds/alist
+mv ./feeds/alist/alist ./feeds/packages/net
+mv ./feeds/alist/luci-app-alist feeds/luci/applications/
+rm -rf feeds/alist
+
 # Add uugamebooster
 rm -rf feeds/luci/applications/luci-app-uugamebooster
 rm -rf feeds/packages/net/uugamebooster
