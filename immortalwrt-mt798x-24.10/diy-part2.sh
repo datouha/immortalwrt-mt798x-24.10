@@ -43,17 +43,30 @@ git clone https://github.com/leshanydy2022/adguardhome.git feeds/packages/net/ad
 # git clone https://github.com/datouha/uugamebooster.git feeds/packages/net/uugamebooster
 
 
-# 为adguardhome alist passwall插件更换最新的版本
-# rm -rf feeds/packages/net/{alist,adguardhome,chinadns-ng,dns2socks,geoview,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocksr-libev,simple-obfs,sing-box,tcping,trojan-plus,tuic-client,v2ray-geodata,v2ray-plugin,xray-core,xray-plugin}
-# rm -rf feeds/luci/applications/{luci-app-adguardhome,luci-app-alist,luci-app-passwall}   
-# git clone https://github.com/leshanydy2022/luci-app-adguardhome.git package/lean/luci-app-adguardhome
-# git clone https://github.com/leshanydy2022/adguardhome.git feeds/packages/net/adguardhome
-# git clone https://github.com/xiaorouji/openwrt-passwall-packages feeds/luci-app-passwall-packages
-# mv ./feeds/luci-app-passwall-packages/{dns2socks,geoview,hysteria,ipt2socks,microsocks,naiveproxy,shadowsocks-libev,shadowsocksr-libev,simple-obfs,sing-box,tcping,trojan-plus,tuic-client,v2ray-geodata,v2ray-plugin,xray-core,xray-plugin,chinadns-ng} ./feeds/packages/net
-# rm -rf feeds/luci-app-passwall-packages
-# git clone https://github.com/sbwml/luci-app-alist package/alist
-# mv ./package/alist/alist ./feeds/packages/net
-# git clone https://github.com/xiaorouji/openwrt-passwall package/luci-app-passwall
+
+# ---------------------------------------------------------------
+## OpenClash
+git clone -b v0.46.086 --depth=1 https://github.com/vernesong/openclash.git OpenClash
+rm -rf feeds/luci/applications/luci-app-openclash
+mv OpenClash/luci-app-openclash feeds/luci/applications/luci-app-openclash
+# ---------------------------------------------------------------
+
+# ##------------- meta core ---------------------------------
+wget https://github.com/MetaCubeX/mihomo/releases/download/v1.19.9/mihomo-linux-arm64-v1.19.9.gz
+gzip -d mihomo-linux-arm64-v1.19.9.gz
+chmod +x mihomo-linux-arm64-v1.19.9 >/dev/null 2>&1
+mkdir -p feeds/luci/applications/luci-app-openclash/root/etc/openclash/core
+mv mihomo-linux-arm64-v1.19.9 feeds/luci/applications/luci-app-openclash/root/etc/openclash/core/clash_meta >/dev/null 2>&1
+# ##---------------------------------------------------------
+
+# ##-------------- GeoIP 数据库 -----------------------------
+curl -sL -m 30 --retry 2 https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat -o /tmp/GeoIP.dat
+mv /tmp/GeoIP.dat feeds/luci/applications/luci-app-openclash/root/etc/openclash/GeoIP.dat >/dev/null 2>&1
+# ##---------------------------------------------------------
+
+# ##-------------- GeoSite 数据库 ---------------------------
+curl -sL -m 30 --retry 2 https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat -o /tmp/GeoSite.dat
+mv -f /tmp/GeoSite.dat feeds/luci/applications/luci-app-openclash/root/etc/openclash/GeoSite.dat >/dev/null 2>&1
 
 # 为smartDNS插件更换最新的版本
 # rm -rf feeds/packages/net/smartdns
