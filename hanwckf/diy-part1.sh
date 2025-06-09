@@ -37,4 +37,4 @@ mv ./feeds/alist/alist ./feeds/packages/net
 mv ./feeds/alist/luci-app-alist feeds/luci/applications/
 rm -rf feeds/alist
 git clone https://github.com/xiaorouji/openwrt-passwall feeds/luci-app-passwall
-mv ./feeds/luci-app-passwall feeds/luci/applications/
+mv ./feeds/luci-app-passwall/luci-app-passwall feeds/luci/applications/
