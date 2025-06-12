@@ -39,6 +39,13 @@ rm -rf feeds/packages/net/uugamebooster
 git clone https://github.com/datouha/uugamebooster.git feeds/1
 mv ./feeds/1/uugamebooster ./feeds/packages/net
 mv ./feeds/1/luci-app-uugamebooster ./feeds/luci/applications
+
+
+# 添加libxcrypt和python3-netifaces
+mv ./feeds/1/libxcrypt ./feeds/packages/libs
+mv ./feeds/1/python3-netifaces ./feeds/packages/lang/python
+
+# 移除不用文件
 rm -rf feeds/1
 
 echo '
@@ -83,6 +90,7 @@ Hidden: 1
 Description:     Translation for luci-app-uugamebooster - 简体中文 (Chinese Simplified)
 
 @@
+
 ' >> feeds/luci.index
 
 echo '
@@ -106,5 +114,86 @@ Type: ipkg
 Description: NetEase UU Game Booster Accelerates Triple-A Gameplay and Market.
 https://uu.163.com
 
+@@
+' >> feeds/packages.index
+
+echo '
+
+Source-Makefile: feeds/packages/libs/libxcrypt/Makefile
+
+Package: libxcrypt
+Version: 4.4.36-1
+Depends: +libc 
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Repository: base
+Title: Extended crypt library
+Maintainer: 
+Source: libxcrypt-4.4.36.tar.xz
+License: LGPL-2.1-or-later
+LicenseFiles: COPYING.LIB
+Type: ipkg
+Build-Only: 1
+Description:   libxcrypt is a modern library for one-way hashing of passwords. It supports
+  a wide variety of both modern and historical hashing methods: yescrypt,
+  gost-yescrypt, scrypt, bcrypt, sha512crypt, sha256crypt, md5crypt, SunMD5,
+  sha1crypt, NT, bsdicrypt, bigcrypt, and descrypt. It provides the traditional
+  Unix crypt and crypt_r interfaces, as well as a set of extended interfaces
+  pioneered by Openwall Linux, crypt_rn, crypt_ra, crypt_gensalt,
+  crypt_gensalt_rn, and crypt_gensalt_ra.
+https://github.com/besser82/libxcrypt
+
+@@
+
+Source-Makefile: feeds/packages/lang/python/python3-netifaces/Makefile
+
+Package: python3-netifaces
+Submenu: Python
+Version: 0.10.9-2
+Depends: +libc +python3-light
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: lang
+Category: Languages
+Repository: base
+Title: Portable network interface information
+Maintainer: Josef Schlehofer <pepe.schlehofer@gmail.com>
+Source: netifaces-0.10.9.tar.gz
+License: MIT
+LicenseFiles: LICENSE
+Type: ipkg
+Description:   Portable network interface information.
+https://github.com/al45tair/netifaces
+Josef Schlehofer <pepe.schlehofer@gmail.com>
+@@
+
+Package: python3-netifaces-src
+Submenu: Python
+Version: 0.10.9-2
+Depends: +libc 
+Conflicts: 
+Menu-Depends: 
+Provides: 
+Section: lang
+Category: Languages
+Repository: base
+Title: Portable network interface information (sources)
+Maintainer: Josef Schlehofer <pepe.schlehofer@gmail.com>
+Source: netifaces-0.10.9.tar.gz
+License: MIT
+LicenseFiles: LICENSE
+Type: ipkg
+Description:       Portable network interface information.
+
+    This package contains the Python source files for python3-netifaces.
+https://github.com/al45tair/netifaces
+Josef Schlehofer <pepe.schlehofer@gmail.com>
+@@
+Config:
+    depends on PACKAGE_python3-netifaces
 @@
 ' >> feeds/packages.index
