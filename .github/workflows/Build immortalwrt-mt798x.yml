@@ -76,10 +76,7 @@ jobs:
       run: |
          cd openwrt
          ./scripts/feeds update -a 
-         git clone https://github.com/openwrt/packages packages_temp
-         cp -r packages_temp/libs/libpam feeds/packages/libs/
-         cp -r packages_temp/net/wsdd2 feeds/packages/net/
-         rm -rf packages_temp
+
 
  
     - name: Load custom configuration
