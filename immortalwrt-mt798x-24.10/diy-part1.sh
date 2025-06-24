@@ -34,12 +34,12 @@
 # rm -rf feeds/alist
 
 # Add uugamebooster
-# rm -rf feeds/luci/applications/luci-app-uugamebooster
-# rm -rf feeds/packages/net/uugamebooster
-# git clone https://github.com/datouha/uugamebooster.git feeds/1
-# mv ./feeds/1/uugamebooster ./feeds/packages/net
-# mv ./feeds/1/luci-app-uugamebooster ./feeds/luci/applications
-# rm -rf feeds/1
+rm -rf feeds/luci/applications/luci-app-uugamebooster
+rm -rf feeds/packages/net/uugamebooster
+git clone https://github.com/datouha/uugamebooster.git feeds/1
+mv ./feeds/1/uugamebooster ./feeds/packages/net
+mv ./feeds/1/luci-app-uugamebooster ./feeds/luci/applications
+rm -rf feeds/1
 
 echo '
 
